@@ -33,7 +33,7 @@ public class Bottom extends JPanel {
                             "update glassskydb.account set enable = 1 where user = '%s' and account = '%s';"
                             , DbOperates.getUser() , table1.getValueAt(row , 0)
                     ));
-                    ((DefaultTableModel)table2.getModel()).addRow(new Object[]{table1.getValueAt(row , 0)});
+                    ((DefaultTableModel)table2.getModel()).addRow(new Object[]{table1.getValueAt(row , 0) , 0.0});
                     ((DefaultTableModel)table1.getModel()).removeRow(row);
                 } catch (SQLException ex) {
 

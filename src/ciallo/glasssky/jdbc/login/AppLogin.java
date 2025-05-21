@@ -52,7 +52,7 @@ public class AppLogin extends Login{
     private void setQuitAndClearDb(JButton button){
         button.addActionListener(e->{
 
-            Tools.setWarning(this,  "数据库已清空,正在结束进程......" , "");
+            Tools.setWarning(this,  "数据库已清空" , "");
             new Timer(1000 , ee->{
                 System.exit(1);
             }).start();

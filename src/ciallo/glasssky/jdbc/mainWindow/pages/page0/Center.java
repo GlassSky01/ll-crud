@@ -18,8 +18,14 @@ public class Center extends JPanel implements Format {
         this.setLayout(new GridLayout(1, 1));
 
         model = new DefaultTableModel(new Object[][]{}, new String[]
-                {"金额", "收支", "账户", "类别", "日期", "备注"});
+                {"金额", "收支", "账户", "类别", "日期", "备注"}){
+            @Override
+            public boolean isCellEditable(int row , int column){
+                return false;
+            }
+        };
         table = new JTable(model);
+        table.getTableHeader().setReorderingAllowed(false);
         Font font = Tools.getFont(h, 27);
         table.getTableHeader().setFont(font);
         table.setFont(font);
@@ -38,7 +44,6 @@ public class Center extends JPanel implements Format {
             model.addRow(data);
         }
     }
-
     @Override
     public void end() {
 
