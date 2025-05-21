@@ -4,7 +4,7 @@ import ciallo.glasssky.jdbc.database.Dbs;
 import ciallo.glasssky.jdbc.login.AppLogin;
 import ciallo.glasssky.jdbc.login.AppRegister;
 import ciallo.glasssky.jdbc.login.DbLogin;
-import ciallo.glasssky.jdbc.mainWindow.Window;
+import ciallo.glasssky.jdbc.mainWindow.MainWindow;
 
 import javax.swing.*;
 import java.io.*;
@@ -17,7 +17,7 @@ public class Main {
     public static void main(String[] args) {
         Tools.init();
         dbLogin = new DbLogin();
-        window = new Window();
+        window = new MainWindow();
         appLogin = new AppLogin();
         appRegister = new AppRegister();
         File file = new File("./config/DbData.properties");

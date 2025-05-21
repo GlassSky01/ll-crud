@@ -3,7 +3,7 @@ package ciallo.glasssky.jdbc.mainWindow.pages.page0.Bottom;
 import ciallo.glasssky.jdbc.Main;
 import ciallo.glasssky.jdbc.Tools;
 import ciallo.glasssky.jdbc.database.DbOperates;
-import ciallo.glasssky.jdbc.mainWindow.Window;
+import ciallo.glasssky.jdbc.mainWindow.MainWindow;
 import ciallo.glasssky.jdbc.mainWindow.pages.page0.Page0;
 
 import javax.swing.*;
@@ -74,7 +74,7 @@ public class Buttons extends JPanel {
                 DefaultTableModel model = ((Page0) this.getParent().getParent()).getCenter().model;
                 model.addRow(new Object[]{money, inOrOut, account, subject, date, mark});
 
-                ((Window)Main.window).resetWarning();
+                ((MainWindow)Main.window).resetWarning();
 
             } catch (Exception xx) {
 
@@ -109,7 +109,7 @@ public class Buttons extends JPanel {
                             ,data[2] , DbOperates.getUser()
                     ));
                     ((DefaultTableModel)table.getModel()).removeRow(row);
-                    ((Window)Main.window).resetWarning();
+                    ((MainWindow)Main.window).resetWarning();
                 } catch (SQLException ex) {
                 }
             }

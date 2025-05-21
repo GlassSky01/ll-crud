@@ -12,16 +12,13 @@ import ciallo.glasssky.jdbc.mainWindow.pages.page3.Page3;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.ColorModel;
-import java.awt.image.DirectColorModel;
 import java.sql.SQLException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.time.temporal.TemporalAdjuster;
 import java.time.temporal.TemporalAdjusters;
 
 
-public class Window extends JFrame implements Format {
+public class MainWindow extends JFrame implements Format {
     private final double size;
     private final JPanel[] comp = new JPanel[3];
     private final JLabel[] warning = new JLabel[2];
@@ -29,13 +26,13 @@ public class Window extends JFrame implements Format {
     private final JButton[] buttons = new JButton[4];
     private final int[] ratio = {1, 10, 2};
     private final int[] heights = new int[3];
-    private final String[] name = {"记账管理", "账户管理", "科目管理", "个人信息"};
+    private final String[] name = {"记账", "账户", "科目", "个人"};
     private final int w, h;
     private Format nowPage;
     private final JPanel emptyPanel = new JPanel();
     private MyMenu menu;
 
-    public Window() {
+    public MainWindow() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("个人记账管理系统");
         size = Tools.H * 3 / 4;
@@ -102,10 +99,13 @@ public class Window extends JFrame implements Format {
         comp[2].setLayout(new GridLayout(1, 4));
         Font font = Tools.getFont(h, 2.5);
         for (int i = 0; i < 4; i++) {
-            buttons[i] = new JButton(name[i].substring(0, 2));
+            buttons[i] = new JButton(name[i]);
             buttons[i].setFont(font);
             int finalI = i;
             buttons[i].addActionListener(e -> {
+                for(int j = 0 ; j < 4 ; j ++)
+                    buttons[j].setText(name[j]);
+                buttons[finalI].setText(">" + name[finalI] + "<");
                 try {
                     pages[finalI].init();
                 } catch (SQLException ex) {
@@ -130,15 +130,15 @@ public class Window extends JFrame implements Format {
         switchover("-1");
         this.setVisible(true);
     }
-
     @Override
     public void end() {
         this.setVisible(false);
+        for(int i = 0 ; i < 4 ; i ++)
+            buttons[i].setText(name[i]);
         if (nowPage != null)
             nowPage.end();
 
     }
-
     public void resetWarning() throws SQLException {
         LocalDate date = LocalDate.now();
         LocalDate mon = date.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY));
