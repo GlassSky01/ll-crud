@@ -29,8 +29,8 @@ public class AppLogin extends Login{
             try {
                 if(DbOperates.login(user.getText() , password.getText()))
                 {
-                    Main.switchover(this , Main.window);
                     DbOperates.setInfo(user.getText() , password.getText());
+                    Main.switchover(this , Main.window);
 
                 }
                 else{

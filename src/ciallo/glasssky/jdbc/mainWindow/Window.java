@@ -126,9 +126,9 @@ public class Window extends JFrame implements Format {
 
     @Override
     public void init() throws SQLException {
+        resetWarning();
         switchover("-1");
         this.setVisible(true);
-        resetWarning();
     }
 
     @Override

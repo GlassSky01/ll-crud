@@ -45,7 +45,7 @@ public class Tools {
         return center;
     }
     public static void setWarning(Component fa , String warning , String title){
-        JOptionPane.showConfirmDialog(fa , warning , title , JOptionPane.DEFAULT_OPTION);
+        JOptionPane.showConfirmDialog(fa , warning , title , JOptionPane.PLAIN_MESSAGE);
     }
     public static String toHtml(String s){
         return "<html>" + s + "</html>";

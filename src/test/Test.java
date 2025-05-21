@@ -43,7 +43,7 @@ public class Test {
             }
         });
         JOptionPane.showConfirmDialog(frame , "这是一个提示框" , "标题"
-        , JOptionPane.DEFAULT_OPTION);
+        , JOptionPane.PLAIN_MESSAGE);
         System.exit(1);
     }
 }
