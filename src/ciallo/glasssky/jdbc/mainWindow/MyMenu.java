@@ -28,20 +28,12 @@ public class MyMenu extends JMenuBar {
         file.add(save);
         file.add(imp);
 
-        JMenuItem help = new JMenuItem("使用说明");
-        help.setFont(font);
-        helpMenu.add(help);
-
         JMenuItem fileHelp = new JMenuItem("文件说明");
         fileHelp.setFont(font);
         helpMenu.add(fileHelp);
 
-        help.addActionListener(e -> {
-            System.out.println("使用说明");
-        });
-
         fileHelp.addActionListener(e -> {
-            System.out.println("文件说明");
+            Tools.setWarning(this.getParent() , "保存文件会将除了个人信息的所有信息保存下来, 导入文件后会覆盖除了个人信息的所有信息" , "文件帮助");
         });
 
         save.addActionListener(e -> {
